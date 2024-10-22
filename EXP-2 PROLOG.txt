@@ -1,0 +1,41 @@
+Family Tree (Establishing Relations between Two Persons):
+
+parent(rahul, isha). 
+parent(rahul, sahil). 
+parent(isha, kiran). 
+parent(sahil, joy).
+% Define relationships
+grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
+% Queries
+% ?- grandparent(rahul, kiran).
+% ?- sibling(isha, sahil).
+
+Factorial Program:
+
+factorial(0, 1). % Base case 
+factorial(N, F) :-
+N > 0,
+N1 is N - 1,
+factorial(N1, F1), 
+F is N * F1.
+% Query
+% ?- factorial(5, F).
+
+LCD and GCD Program:
+
+gcd(0, X, X) :- X > 0.
+gcd(X, 0, X) :- X > 0.
+gcd(A, B, G) :-
+A > 0, B > 0,
+A1 is A mod B, 
+gcd(B, A1, G).
+
+% LCD is calculated using the formula: LCM * GCD = Product of two numbers 
+
+lcm(A, B, L) :-
+gcd(A, B, G),
+L is (A * B) // G.
+% Query
+% ?- gcd(48, 18, G). 
+% ?- lcm(48, 18, L).
